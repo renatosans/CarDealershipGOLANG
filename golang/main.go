@@ -73,5 +73,5 @@ func main() {
 	rGroup.DELETE("/cars/:id", deleteCar)
 
 	router.Use(cors.Default())
-	router.Run(":3000") // listen and serve on 0.0.0.0:3000
+	router.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
