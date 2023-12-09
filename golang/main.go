@@ -34,6 +34,32 @@ func getCars(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": pets})
 }
 
+func postCar(c *gin.Context) {
+	var payload db.InnerCarsForSale
+
+	// Bind JSON body to the Pet struct
+	if err := c.ShouldBindJSON(&payload); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	client := GetPrisma(c)
+	insertedCar, err := client.CarsForSale.CreateOne(
+		db.CarsForSale.Brand.Set(payload.Brand),
+		db.CarsForSale.Model.Set(payload.Model),
+		db.CarsForSale.Year.Set(payload.Year),
+		db.CarsForSale.Price.Set(payload.Price),
+		db.CarsForSale.Color.SetOptional(payload.Color),
+		db.CarsForSale.Mileage.SetOptional(payload.Mileage),
+	).Exec(c)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Car created successfully", "car": insertedCar})
+}
+
 func deleteCar(c *gin.Context) {
 	// TODO: utilizar o flag_removed ao invés de apagar o registro na tabela
 
@@ -68,7 +94,7 @@ func main() {
 
 	rGroup := router.Group("/api")
 	rGroup.GET("/cars", getCars)
-	// rGroup.POST("/cars", postCar)
+	rGroup.POST("/cars", postCar)
 	// rGroup.PATCH("/cars/:id", patchCar)
 	rGroup.DELETE("/cars/:id", deleteCar)
 
