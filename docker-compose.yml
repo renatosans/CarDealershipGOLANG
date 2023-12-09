@@ -1,12 +1,12 @@
 version: '3.9'
 
 services:
-#  react:
-#    build:
-#      context: react
-#      dockerfile: Dockerfile
-#    ports:
-#      - "3000:3000"
+  react:
+    build:
+      context: react
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
   golang:
     build: 
       context: golang
