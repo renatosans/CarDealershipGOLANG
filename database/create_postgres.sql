@@ -24,6 +24,14 @@ CREATE TABLE public.customer (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE public.salesperson (
+	id SERIAL,
+	first_name varchar(50) NULL,
+	last_name varchar(50) NULL,
+	commission numeric(4, 2) NOT NULL,
+	PRIMARY KEY (id)
+);
+
 -- data for table cars_for_sale
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (1,'Hyundai','i30',2016,'/img/cars/hyundai_i30.png','Azul',0,'hatch',81040.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (2,'Honda','fit',2019,'/img/cars/honda_fit.png','Vermelho',0,'hatch',76035.00);
