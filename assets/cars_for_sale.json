@@ -1,0 +1,46 @@
+[
+	{
+		"id" : 1,
+		"brand" : "Hyundai",
+		"model" : "i30",
+		"year" : 2016,
+		"img" : "/img/cars/hyundai_i30.png",
+		"color" : "Azul",
+		"mileage" : 0,
+		"category" : "hatch",
+		"price" : 81040.00
+	},
+	{
+		"id" : 2,
+		"brand" : "Honda",
+		"model" : "fit",
+		"year" : 2019,
+		"img" : "/img/cars/honda_fit.png",
+		"color" : "Vermelho",
+		"mileage" : 0,
+		"category" : "hatch",
+		"price" : 76035.00
+	},
+	{
+		"id" : 3,
+		"brand" : "Toyota",
+		"model" : "yaris",
+		"year" : 2019,
+		"img" : "/img/cars/toyota_yaris.png",
+		"color" : "Branco",
+		"mileage" : 0,
+		"category" : "hatch",
+		"price" : 84056.00
+	},
+	{
+		"id" : 4,
+		"brand" : "Volkswagen",
+		"model" : "golf",
+		"year" : 2017,
+		"img" : "/img/cars/volkswagen_golf.png",
+		"color" : "Branco",
+		"mileage" : 0,
+		"category" : "hatch",
+		"price" : 79011.00
+	}
+]
