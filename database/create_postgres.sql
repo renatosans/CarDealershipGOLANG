@@ -37,3 +37,8 @@ INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (2,'Honda','fit',2019,'/img/cars/honda_fit.png','Vermelho',0,'hatch',76035.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (3,'Toyota','yaris',2019,'/img/cars/toyota_yaris.png','Branco',0,'hatch',84056.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (4,'Volkswagen','golf',2017,'/img/cars/volkswagen_golf.png','Branco',0,'hatch',79011.00);
+
+-- data for table customer
+INSERT INTO customer ("id","first_name","last_name","birth_date","email","phone") VALUES (1,'Herbert','Olga','1982-11-10','herbertolga@gmail.com.ca','99727701');
+INSERT INTO customer ("id","first_name","last_name","birth_date","email","phone") VALUES (2,'Isabela','Cristina','1997-05-05','isabela@gmail.com','99700522');
+INSERT INTO customer ("id","first_name","last_name","birth_date","email","phone") VALUES (3,'Caio','Batista','1990-10-06','caio_batista@hotmail.com','99700113');
