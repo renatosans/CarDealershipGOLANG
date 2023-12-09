@@ -30,10 +30,10 @@ func main() {
 	})
 
 	rGroup := router.Group("/api")
-	rGroup.GET("/pets", getPets)
-	rGroup.POST("/pets", postPet)
-	rGroup.PATCH("/pets/:id", patchPet)
-	rGroup.DELETE("/pets/:id", deletePet)
+	rGroup.GET("/pets", getCars)
+	rGroup.POST("/pets", postCar)
+	rGroup.PATCH("/pets/:id", patchCar)
+	rGroup.DELETE("/pets/:id", deleteCar)
 
 	router.Use(cors.Default())
 	router.Run(":3000") // listen and serve on 0.0.0.0:3000

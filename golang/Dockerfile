@@ -13,5 +13,5 @@ RUN apk --no-cache add ca-certificates
 RUN apk update && apk add openssl
 COPY --from=builder /go/bin/app /app
 ENTRYPOINT /app
-LABEL Name=petclinicgolang Version=0.0.1
+LABEL Name=cardealership Version=0.0.1
 EXPOSE 3000
