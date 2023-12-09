@@ -7,3 +7,5 @@ Sistema para concessionária de carros usando Golang and React
 - Set DATABASE_URL in the .env file
 - Run the script to generate prisma client and create the database:
     > go run github.com/steebchen/prisma-client-go db push
+- docker compose up
+- Follow the link http://localhost:8080/api/cars
