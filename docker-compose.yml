@@ -1,14 +1,18 @@
 version: '3.9'
 
 services:
-  rustapp:
-    container_name: rustapp
-    image: vendor00001/petclinic
-    build:
-      context: .
+#  react:
+#    build:
+#      context: react
+#      dockerfile: Dockerfile
+#    ports:
+#      - "3000:3000"
+  golang:
+    build: 
+      context: golang
       dockerfile: Dockerfile
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/pet_clinic
+      DATABASE_URL: postgres://postgres:postgres@db:5432/car_dealership
     ports:
       - '8080:8080'
     depends_on:

@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 )
 
 func GetPrisma(c *gin.Context) *db.PrismaClient {
@@ -19,8 +19,23 @@ func GetPrisma(c *gin.Context) *db.PrismaClient {
 	return client
 }
 
+func getCars(c *gin.Context) {
+	// var pets []db.InnerPet
+
+	client := GetPrisma(c)
+
+	pets, err := client.CarsForSale.FindMany().Exec(c)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": pets})
+}
+
+
 func main() {
-	// godotenv.Load(".env")
+	godotenv.Load(".env")
 
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
@@ -31,9 +46,9 @@ func main() {
 
 	rGroup := router.Group("/api")
 	rGroup.GET("/pets", getCars)
-	rGroup.POST("/pets", postCar)
-	rGroup.PATCH("/pets/:id", patchCar)
-	rGroup.DELETE("/pets/:id", deleteCar)
+	// rGroup.POST("/pets", postCar)
+	// rGroup.PATCH("/pets/:id", patchCar)
+	// rGroup.DELETE("/pets/:id", deleteCar)
 
 	router.Use(cors.Default())
 	router.Run(":3000") // listen and serve on 0.0.0.0:3000
