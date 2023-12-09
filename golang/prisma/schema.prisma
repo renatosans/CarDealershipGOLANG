@@ -1,0 +1,59 @@
+generator db {
+  provider = "go run github.com/steebchen/prisma-client-go"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model cars_for_sale {
+  id       Int      @id @default(autoincrement())
+  brand    String   @db.VarChar(50)
+  model    String   @db.VarChar(100)
+  year     Int      @db.Integer
+  img      String?  @db.VarChar(255)
+  color    String?  @db.VarChar(50)
+  mileage  Int?     @db.Integer
+  category String?  @db.VarChar(50)
+  price    Decimal  @db.Decimal(10, 2)
+  invoice  invoice?
+}
+
+model cars_for_service {
+  id          Int       @id @default(autoincrement())
+  customer_id Int       @db.Integer
+  car_details String    @db.VarChar(160)
+  mechanic    String    @db.VarChar(160)
+  customer    customer  @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model customer {
+  id               Int                @id @default(autoincrement())
+  first_name       String             @db.VarChar(50)
+  last_name        String             @db.VarChar(50)
+  birth_date       DateTime           @db.Date
+  email            String?            @db.VarChar(100)
+  phone            String?            @db.VarChar(20)
+  cars_for_service cars_for_service[]
+  invoice          invoice[]
+}
+
+model invoice {
+  id             Int             @id @default(autoincrement())
+  customer_id    Int             @db.Integer
+  salesperson_id Int             @db.Integer
+  car_id         Int             @db.Integer @unique
+  amount         Int             @db.Integer
+  customer       customer?       @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  salesperson    salesperson?    @relation(fields: [salesperson_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  car            cars_for_sale?  @relation(fields: [car_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model salesperson {
+  id         Int       @id @default(autoincrement())
+  first_name String?   @db.VarChar(50)
+  last_name  String?   @db.VarChar(50)
+  commission Decimal   @db.Decimal(4, 2)
+  invoice    invoice[]
+}
