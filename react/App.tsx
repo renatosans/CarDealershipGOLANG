@@ -23,7 +23,7 @@ export default function Home() {
   const getCars = () => {
     fetch(baseUrl + `/api/cars`)
     .then(resp => resp.json())
-    .then(resultSet => setCars(resultSet))
+    .then(resultSet => setCars(resultSet.data))
     .catch(error => console.error(error))
   }
 

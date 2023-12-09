@@ -86,6 +86,8 @@ func main() {
 	// godotenv.Load(".env")
 
 	router := gin.Default()
+	router.Use(cors.Default())
+
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "Gin gonic API",
@@ -97,7 +99,6 @@ func main() {
 	rGroup.POST("/cars", postCar)
 	// rGroup.PATCH("/cars/:id", patchCar)
 	rGroup.DELETE("/cars/:id", deleteCar)
-
-	router.Use(cors.Default())
+	
 	router.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
