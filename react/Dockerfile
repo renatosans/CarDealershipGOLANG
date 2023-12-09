@@ -9,5 +9,5 @@ RUN npm run build
 #final stage
 FROM nginx:alpine as prod
 EXPOSE 3000
-COPY --from=build /root/build /usr/share/nginx/html
+COPY --from=build /root/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
