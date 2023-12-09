@@ -1,0 +1,75 @@
+.container {
+    position: relative;
+    left: calc(50% - 350px);
+    top: calc(50% - 100px);
+    width: 350px;
+    height: 100px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    border-radius: 0.25rem;
+
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    
+    margin-bottom: 1rem;
+    
+    --tw-bg-opacity: 1;
+    background-color: rgb(47 47 47 / var(--tw-bg-opacity));
+    
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);    
+}
+
+.fileDialog {
+    background-color: #9F9F9F;
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    font-weight: bold;
+    color: white;
+    background-color: rgb(55 48 163);
+    padding: 0.9rem 1.5rem 0.9rem 1.5rem;
+
+    border: none;
+    border-radius: 15px;
+  
+}
+
+.label {
+    display: block;
+    color: white;
+}
+
+.input {
+    line-height: 1.25;
+
+    border-width: 1px;
+    border-radius: 0.25rem;
+    
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);    
+}

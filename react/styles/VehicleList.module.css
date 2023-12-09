@@ -1,0 +1,42 @@
+.container {
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 47 47 / var(--tw-bg-opacity));
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+  font-size: 32px;
+}
+
+.desc {
+  color: white;
+  font-size: 20px;
+}
+
+.mainWrapper {
+  display: flex;
+  align-items: stretch;
+  background-color: lightgray;
+}
+
+.listWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    text-align: center;
+  }
+  .desc {
+    text-align: center;
+    width: 90%;
+  }
+}
