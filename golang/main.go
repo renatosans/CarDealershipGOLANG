@@ -21,7 +21,7 @@ func GetPrisma(c *gin.Context) *db.PrismaClient {
 }
 
 func getCars(c *gin.Context) {
-	// var pets []db.InnerPet
+	// var cars []db.InnerCarsForSale
 
 	client := GetPrisma(c)
 
