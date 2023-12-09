@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 )
 
 func GetPrisma(c *gin.Context) *db.PrismaClient {
@@ -57,7 +57,7 @@ func deleteCar(c *gin.Context) {
 }
 
 func main() {
-	godotenv.Load(".env")
+	// godotenv.Load(".env")
 
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
