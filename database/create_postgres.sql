@@ -14,6 +14,17 @@ CREATE TABLE public.cars_for_sale (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE public.customer (
+	id SERIAL,
+	first_name varchar(50) NOT NULL,
+	last_name varchar(50) NOT NULL,
+	birth_date date NOT NULL,
+	email varchar(100) NULL,
+	phone varchar(20) NULL,
+	PRIMARY KEY (id)
+);
+
+-- data for table cars_for_sale
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (1,'Hyundai','i30',2016,'/img/cars/hyundai_i30.png','Azul',0,'hatch',81040.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (2,'Honda','fit',2019,'/img/cars/honda_fit.png','Vermelho',0,'hatch',76035.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (3,'Toyota','yaris',2019,'/img/cars/toyota_yaris.png','Branco',0,'hatch',84056.00);
