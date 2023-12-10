@@ -34,19 +34,17 @@ func PostInvoice(c *gin.Context) {
 
 	client := utils.GetPrisma(c)
 	insertedInvoice, err := client.Invoice.CreateOne(
-		db.
-			db.Pet.Name.Set(payload.Name),
-		db.Pet.Breed.Set(payload.Breed),
-		db.Pet.FlagRemoved.Set(payload.FlagRemoved),
-		db.Pet.Age.SetOptional(payload.Age),
-		db.Pet.Owner.SetOptional(payload.Owner),
+		db.Invoice.Amount.Set(payload.Amount),
+		db.Invoice.CustomerID.SetIfPresent(&payload.CustomerID),
+		db.Invoice.SalespersonID.SetIfPresent(&payload.SalespersonID),
+		db.Invoice.CarID.SetIfPresent(&payload.CarID),
 	).Exec(c)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Pet created successfully", "pet": insertedPet})
+	c.JSON(http.StatusOK, gin.H{"message": "Invoice created successfully", "invoice": insertedInvoice})
 }
 
 func PatchInvoice(c *gin.Context) {
@@ -93,13 +91,13 @@ func DeleteInvoice(c *gin.Context) {
 	}
 
 	client := utils.GetPrisma(c)
-	deletedPet, err := client.Pet.FindUnique(
-		db.Pet.ID.Equals(id),
+	deletedInvoice, err := client.Invoice.FindUnique(
+		db.Invoice.ID.Equals(id),
 	).Delete().Exec(c)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Pet deleted successfully", "pet id": deletedPet.ID})
+	c.JSON(http.StatusOK, gin.H{"message": "Invoice deleted successfully", "id": deletedInvoice.ID})
 }

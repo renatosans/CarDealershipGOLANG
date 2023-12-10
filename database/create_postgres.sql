@@ -59,3 +59,9 @@ INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","
 INSERT INTO customer ("id","first_name","last_name","birth_date","email","phone") VALUES (1,'Herbert','Olga','1982-11-10','herbertolga@gmail.com.ca','99727701');
 INSERT INTO customer ("id","first_name","last_name","birth_date","email","phone") VALUES (2,'Isabela','Cristina','1997-05-05','isabela@gmail.com','99700522');
 INSERT INTO customer ("id","first_name","last_name","birth_date","email","phone") VALUES (3,'Caio','Batista','1990-10-06','caio_batista@hotmail.com','99700113');
+
+-- data for table salesperson
+INSERT INTO salesperson ("id","first_name","last_name","commission") VALUES (1,'Candido','Martins',4.30);
+INSERT INTO salesperson ("id","first_name","last_name","commission") VALUES (2,'Lidia','Alcantara',3.90);
+INSERT INTO salesperson ("id","first_name","last_name","commission") VALUES (3,'Maria','Menezes',4.10);
+INSERT INTO salesperson ("id","first_name","last_name","commission") VALUES (4,'Rodolfo','Zimmerman',4.20);
