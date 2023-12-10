@@ -74,6 +74,20 @@ func deleteCar(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Car deleted successfully", "car id": deletedCar.ID})
 }
 
+func addCustomerHandlers(rGroup *gin.RouterGroup) {
+	rGroup.GET("/customers", handlers.GetCustomers)
+	rGroup.POST("/customers", handlers.PostCustomer)
+	rGroup.PATCH("/customers/:id", handlers.PatchCustomer)
+	rGroup.DELETE("/customers/:id", handlers.DeleteCustomer)
+}
+
+func addSalespersonHandlers(rGroup *gin.RouterGroup) {
+	rGroup.GET("/salespeople", handlers.GetSalespeople)
+	rGroup.POST("/salespeople", handlers.PostSalesperson)
+	rGroup.PATCH("/salespeople/:id", handlers.PatchSalesperson)
+	rGroup.DELETE("/salespeople/:id", handlers.DeleteSalesperson)
+}
+
 func main() {
 	// Variáveis de ambiente passadas no docker compose,  remover o comentário caso necessite
 	// godotenv.Load(".env")
@@ -93,10 +107,8 @@ func main() {
 	// rGroup.PATCH("/cars/:id", patchCar)
 	rGroup.DELETE("/cars/:id", deleteCar)
 
-	rGroup.GET("/salespeople", handlers.GetSalespeople)
-	rGroup.POST("/salespeople", handlers.PostSalesperson)
-	// rGroup.PATCH("/salespeople/:id", handlers.PatchSalesperson)
-	rGroup.DELETE("/salespeople/:id", handlers.DeleteSalesperson)
+	addCustomerHandlers(rGroup)
+	addSalespersonHandlers(rGroup)
 
 	router.Run(":8080") // listen and serve on 0.0.0.0:8080
 }

@@ -40,6 +40,15 @@ CREATE TABLE public.salesperson (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE public.invoice (
+	id SERIAL,
+	customer_id int4 NOT NULL,
+	salesperson_id int4 NOT NULL,
+	car_id int4 NOT NULL,
+	amount int4 NOT NULL,
+	PRIMARY KEY (id)
+);
+
 -- data for table cars_for_sale
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (1,'Hyundai','i30',2016,'/img/cars/hyundai_i30.png','Azul',0,'hatch',81040.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (2,'Honda','fit',2019,'/img/cars/honda_fit.png','Vermelho',0,'hatch',76035.00);
