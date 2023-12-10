@@ -88,6 +88,12 @@ func addSalespersonHandlers(rGroup *gin.RouterGroup) {
 	rGroup.DELETE("/salespeople/:id", handlers.DeleteSalesperson)
 }
 
+func addInvoiceHandlers(rGroup *gin.RouterGroup) {
+	rGroup.GET("invoices", handlers.GetInvoices)
+	// rGroup.POST("invoices", ...
+	// ...
+}
+
 func main() {
 	// Variáveis de ambiente passadas no docker compose,  remover o comentário caso necessite
 	// godotenv.Load(".env")
@@ -109,6 +115,7 @@ func main() {
 
 	addCustomerHandlers(rGroup)
 	addSalespersonHandlers(rGroup)
+	addInvoiceHandlers(rGroup)
 
 	router.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
