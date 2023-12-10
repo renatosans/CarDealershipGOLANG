@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cardealership/utils"
 	"cardealership/prisma/db"
 	"net/http"
 	"strconv"
@@ -10,20 +11,10 @@ import (
 	// "github.com/joho/godotenv"
 )
 
-func GetPrisma(c *gin.Context) *db.PrismaClient {
-	client := db.NewClient()
-	if err := client.Prisma.Connect(); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return nil
-	}
-
-	return client
-}
-
 func getCars(c *gin.Context) {
 	// var cars []db.InnerCarsForSale
 
-	client := GetPrisma(c)
+	client := utils.GetPrisma(c)
 
 	pets, err := client.CarsForSale.FindMany().Exec(c)
 	if err != nil {
@@ -43,7 +34,7 @@ func postCar(c *gin.Context) {
 		return
 	}
 
-	client := GetPrisma(c)
+	client := utils.GetPrisma(c)
 	insertedCar, err := client.CarsForSale.CreateOne(
 		db.CarsForSale.Brand.Set(payload.Brand),
 		db.CarsForSale.Model.Set(payload.Model),
@@ -70,7 +61,7 @@ func deleteCar(c *gin.Context) {
 		return
 	}
 
-	client := GetPrisma(c)
+	client := utils.GetPrisma(c)
 	deletedCar, err := client.CarsForSale.FindUnique(
 		db.CarsForSale.ID.Equals(id),
 	).Delete().Exec(c)
