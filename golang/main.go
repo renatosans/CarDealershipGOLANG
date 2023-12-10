@@ -1,9 +1,9 @@
 package main
 
 import (
-	"cardealership/utils"
 	"cardealership/handlers"
 	"cardealership/prisma/db"
+	"cardealership/utils"
 	"net/http"
 	"strconv"
 
@@ -90,8 +90,9 @@ func addSalespersonHandlers(rGroup *gin.RouterGroup) {
 
 func addInvoiceHandlers(rGroup *gin.RouterGroup) {
 	rGroup.GET("invoices", handlers.GetInvoices)
-	// rGroup.POST("invoices", ...
-	// ...
+	rGroup.POST("invoices", handlers.PostInvoice)
+	rGroup.PATCH("invoices/:id", handlers.PatchInvoice)
+	rGroup.DELETE("invoices/:id", handlers.DeleteInvoice)
 }
 
 func main() {
@@ -99,7 +100,7 @@ func main() {
 	// godotenv.Load(".env")
 
 	router := gin.Default()
-	router.Use(cors.Default())    // CORS - Default() allows all origins
+	router.Use(cors.Default()) // CORS - Default() allows all origins
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -110,7 +111,6 @@ func main() {
 	rGroup := router.Group("/api")
 	rGroup.GET("/cars", getCars)
 	rGroup.POST("/cars", postCar)
-	// rGroup.PATCH("/cars/:id", patchCar)
 	rGroup.DELETE("/cars/:id", deleteCar)
 
 	addCustomerHandlers(rGroup)
