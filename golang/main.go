@@ -2,6 +2,7 @@ package main
 
 import (
 	"cardealership/utils"
+	"cardealership/handlers"
 	"cardealership/prisma/db"
 	"net/http"
 	"strconv"
@@ -90,6 +91,11 @@ func main() {
 	rGroup.POST("/cars", postCar)
 	// rGroup.PATCH("/cars/:id", patchCar)
 	rGroup.DELETE("/cars/:id", deleteCar)
-	
+
+	rGroup.GET("/salespeople", handlers.GetSalespeople)
+	rGroup.POST("/salespeople", handlers.PostSalesperson)
+	// rGroup.PATCH("/salespeople/:id", handlers.PatchSalesperson)
+	rGroup.DELETE("/salespeople/:id", handlers.DeleteSalesperson)
+
 	router.Run(":8080") // listen and serve on 0.0.0.0:8080
 }

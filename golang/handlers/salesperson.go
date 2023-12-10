@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getSalesperson(c *gin.Context) {
+func GetSalespeople(c *gin.Context) {
 	// var salespeople []db.InnerSalesperson
 
 	client := utils.GetPrisma(c)
@@ -22,7 +22,7 @@ func getSalesperson(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": salesPeople})
 }
 
-func postSalesperson(c *gin.Context) {
+func PostSalesperson(c *gin.Context) {
 	var payload db.InnerSalesperson
 
 	// Bind JSON body to the struct
@@ -45,7 +45,7 @@ func postSalesperson(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Salesperson created successfully", "salesperson": insertedSp})
 }
 
-func deleteSalesperson(c *gin.Context) {
+func DeleteSalesperson(c *gin.Context) {
 	// TODO: utilizar o flag_removed ao invés de apagar o registro na tabela
 
 	idParam := c.Param("id")
