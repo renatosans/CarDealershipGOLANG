@@ -75,10 +75,11 @@ func deleteCar(c *gin.Context) {
 }
 
 func main() {
+	// Variáveis de ambiente passadas no docker compose,  remover o comentário caso necessite
 	// godotenv.Load(".env")
 
 	router := gin.Default()
-	router.Use(cors.Default())
+	router.Use(cors.Default())    // CORS - Default() allows all origins
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
