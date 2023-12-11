@@ -16,7 +16,7 @@ func GetInvoices(c *gin.Context) {
 
 	invoices, err := client.Invoice.FindMany().Exec(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 

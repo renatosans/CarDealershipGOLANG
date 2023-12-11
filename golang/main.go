@@ -19,7 +19,7 @@ func getCars(c *gin.Context) {
 
 	pets, err := client.CarsForSale.FindMany().Exec(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
