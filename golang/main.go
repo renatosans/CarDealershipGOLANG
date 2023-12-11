@@ -29,7 +29,7 @@ func getCars(c *gin.Context) {
 func postCar(c *gin.Context) {
 	var payload db.InnerCarsForSale
 
-	// Bind JSON body to the Pet struct
+	// Bind JSON body to the struct
 	if err := c.ShouldBindJSON(&payload); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
