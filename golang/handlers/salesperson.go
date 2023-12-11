@@ -92,7 +92,7 @@ func DeleteSalesperson(c *gin.Context) {
 		db.Salesperson.ID.Equals(id),
 	).Delete().Exec(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 

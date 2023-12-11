@@ -95,7 +95,7 @@ func DeleteInvoice(c *gin.Context) {
 		db.Invoice.ID.Equals(id),
 	).Delete().Exec(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
