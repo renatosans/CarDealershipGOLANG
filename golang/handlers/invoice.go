@@ -101,3 +101,7 @@ func DeleteInvoice(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Invoice deleted successfully", "id": deletedInvoice.ID})
 }
+
+func GerarPedido(c *gin.Context) {
+	
+}
