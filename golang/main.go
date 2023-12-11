@@ -27,7 +27,7 @@ func addInvoiceHandlers(rGroup *gin.RouterGroup) {
 	rGroup.POST("invoices", handlers.PostInvoice)
 	rGroup.PATCH("invoices/:id", handlers.PatchInvoice)
 	rGroup.DELETE("invoices/:id", handlers.DeleteInvoice)
-	rGroup.POST("gerarPedido", handlers.GerarPedido)
+	rGroup.GET("gerarpedido", handlers.GerarPedido)
 }
 
 func main() {

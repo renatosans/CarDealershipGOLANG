@@ -4,7 +4,6 @@ import (
 	"cardealership/prisma/db"
 	"cardealership/utils"
 	"net/http"
-	"strings"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -105,12 +104,19 @@ func DeleteInvoice(c *gin.Context) {
 }
 
 func GerarPedido(c *gin.Context) {
+	file := utils.Invoice{}
+	file.Currency = "BRL";
+
+	var output = "invoice.pdf"
+
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{
 		PageSize: *gopdf.PageSizeA4,
 	})
 	pdf.SetMargins(40, 40, 40, 40)
 	pdf.AddPage()
+
+    /*
 	err := pdf.AddTTFFontData("Inter", interFont)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -143,17 +149,20 @@ func GerarPedido(c *gin.Context) {
 		subtotal += float64(q) * r
 	}
 	if file.Note != "" {
-		writeNotes(&pdf, file.Note)
+		utils.WriteNotes(&pdf, file.Note)
 	}
 	utils.WriteTotals(&pdf, subtotal, subtotal*file.Tax, subtotal*file.Discount)
 	if file.Due != "" {
-		writeDueDate(&pdf, file.Due)
+		utils.WriteDueDate(&pdf, file.Due)
 	}
 	utils.WriteFooter(&pdf, file.Id)
-	output = strings.TrimSuffix(output, ".pdf") + ".pdf"
-	err = pdf.WritePdf(output)
+	*/
+
+	err := pdf.WritePdf(output)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Pedido numero: "})
 }
