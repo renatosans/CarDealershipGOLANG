@@ -40,7 +40,7 @@ func PostCustomer(c *gin.Context) {
 		db.Customer.Phone.SetOptional(payload.Phone),
 	).Exec(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -74,7 +74,7 @@ func PatchCustomer(c *gin.Context) {
 		db.Customer.Phone.SetOptional(payload.Phone),
 	).Exec(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
