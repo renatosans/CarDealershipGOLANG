@@ -14,7 +14,6 @@ import (
 // Maas Lalani
 // https://github.com/maaslalani
 
-
 var currencySymbols = map[string]string{
 	"USD": "$",
 	"BRL": "R$",
@@ -169,6 +168,7 @@ func WriteNotes(pdf *gopdf.GoPdf, notes string) {
 
 	pdf.Br(48)
 }
+
 func WriteFooter(pdf *gopdf.GoPdf, id string) {
 	pdf.SetY(800)
 
