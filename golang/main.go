@@ -43,9 +43,10 @@ func main() {
 	})
 
 	rGroup := router.Group("/api")
-	rGroup.GET("/cars", getCars)
-	rGroup.POST("/cars", postCar)
-	rGroup.DELETE("/cars/:id", deleteCar)
+	rGroup.GET("/cars", handlers.GetCars)
+	rGroup.POST("/cars", handlers.PostCar)
+	rGroup.PATCH("/cars/:id", handlers.PatchCar)
+	rGroup.DELETE("/cars/:id", handlers.DeleteCar)
 
 	addCustomerHandlers(rGroup)
 	addSalespersonHandlers(rGroup)
