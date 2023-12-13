@@ -49,6 +49,14 @@ CREATE TABLE public.invoice (
 	PRIMARY KEY (id)
 );
 
+alter table invoice
+    add constraint fk_invoice_customer
+        foreign key (customer_id) references customer;
+
+alter table invoice
+    add constraint fk_invoice_car
+        foreign key (car_id) references cars_for_sale;
+
 -- data for table cars_for_sale
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (1,'Hyundai','i30',2016,'/img/cars/hyundai_i30.png','Azul',0,'hatch',81040.00);
 INSERT INTO cars_for_sale ("id","brand","model","year","img","color","mileage","category","price") VALUES (2,'Honda','fit',2019,'/img/cars/honda_fit.png','Vermelho',0,'hatch',76035.00);
