@@ -10,7 +10,7 @@ import (
 func GetPrisma(c *gin.Context) *db.PrismaClient {
 	client := db.NewClient()
 	if err := client.Prisma.Connect(); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return nil
 	}
 
